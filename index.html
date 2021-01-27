@@ -12,20 +12,30 @@
       // unknown sites
       { name: 'google', key: '*', url: 'https://encrypted.google.com', search: '/search?q={}', },
 
-      // work
-      { category: 'work', name: 'drive', key: 'd', url: 'https://drive.google.com', search: '/drive/search?q={}', },
-      { category: 'work', name: 'gitHub', key: 'g', url: 'https://github.com', search: '/search?q={}', },
-      { category: 'work', name: 'gmail', key: 'm', url: 'https://gmail.com', search: '', },
+      // Google
+      { category: 'google', name: 'Drive', key: 'd', url: 'https://drive.google.com', search: '/drive/search?q={}', },
+      { category: 'google', name: 'GitHub', key: 'g', url: 'https://github.com', search: '/search?q={}', },
+
+      // Create
+      { category: 'create', name: 'Gmail', key: 'm', url: 'https://gmail.com', search: '', },
+
+      // Work
+      { category: 'work', name: 'Trello', key: 'T', url: 'https://trello.com', search: '', },
 
       // social media
-      { category: 'social media', name: 'reddit', key: 'r', url: 'https://www.reddit.com', search: '/search?q={}', },
-      { category: 'social media', name: 'twitter', key: 't', url: 'https://www.twitter.com', search: '/search?q={}', },
+      { category: 'social media', name: 'Reddit', key: 'r', url: 'https://www.reddit.com', search: '/search?q={}', },
+      { category: 'social media', name: 'Twitter', key: 't', url: 'https://www.twitter.com', search: '/search?q={}', },
 
       // education
-      { category: 'education', name: 'csun', key: 'csun', url: 'https://csun.edu', search: '', },
-      { category: 'education', name: 'canvas', key: 'canvas', url: 'https://canvas.csun.edu', search: '', },
-      { category: 'education', name: 'lynda', key: 'l', url: 'https://lnkd.in/d7zZ_Zx', search: '', },
-      { category: 'education', name: 'pearson', key: 'p', url: 'https://portal.mypearson.com/course-home#/tab/active', search: '', },
+      { category: 'education', name: 'CSUN', key: 'c', url: 'https://csun.edu', search: '', },
+      { category: 'education', name: 'Canvas', key: 'ca', url: 'https://canvas.csun.edu', search: '', },
+      { category: 'education', name: 'Lynda', key: 'l', url: 'https://lnkd.in/d7zZ_Zx', search: '', },
+      { category: 'education', name: 'Pearson', key: 'p', url: 'https://portal.mypearson.com/course-home#/tab/active', search: '', },
+
+      // Games
+      { category: 'games', name: 'NexusMods', key: 'n', url: 'https://nexusmods.com', search: '', },
+      { category: 'games', name: 'Steam', key: 's', url: 'https://store.steampowered.com', search: '', },
+      { category: 'games', name: 'Steam Community', key: 'sc', url: 'https://steamcommunity.com', search: '', },
 
     ],
 
@@ -114,6 +124,7 @@
     --foreground: #232931;
     --searchBackground: #000;
     --searchForeground: #fff;
+    --base-border-radius: 3px;
 
     /* fonts */
     --font-family: Lato, sans-serif;
@@ -144,19 +155,12 @@
       url('./fonts/lato-v14-latin-900.woff2') format('woff2'),
       url('./fonts/lato-v14-latin-900.woff') format('woff');
   }
-
-  @font-face {
-    font-family: brandon;
-    font-style: normal;
-    src:  url('./fonts/brandon.otf');
-  }
 </style>
 
 <style type="text/css">
   * {
     box-sizing: border-box;
-    text-transform: lowercase !important;
-    font-family: brandon !important;
+    /* font-family: "ariel" !important; */
     letter-spacing: 0px !important;
   }
 
@@ -325,6 +329,8 @@
     margin-bottom: 1.5rem;
     font-size: 0.75rem;
     letter-spacing: 0.15rem;
+    font-weight: bold;
+    text-transform: uppercase;
   }
 
   .command a {
@@ -341,16 +347,17 @@
 
   .command-key {
     display: block;
+    flex-shrink: 0;
     float: left;
-    width: 2rem;
-    height: 2rem;
-    margin-right: 1rem;
-    border-radius: 50%;
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-right: 1.5rem;
+    border-radius: var(--base-border-radius);
+    font-weight: var(--font-weight-bold);
+    line-height: 2.25rem;
+    text-align: center;
     background: var(--foreground);
     color: var(--background);
-    font-size: 0.75rem;
-    line-height: 2rem;
-    text-align: center;
   }
 
   .command-name {
